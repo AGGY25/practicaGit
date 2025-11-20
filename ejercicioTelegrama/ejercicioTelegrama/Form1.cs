@@ -20,8 +20,8 @@ namespace ejercicioTelegrama
         private void btnCalcular_Click(object sender,EventArgs e)
         {
             string textoTelegrama;
-
-            char tipoTelegrama = ' ';
+            //**he cambiado el tipo de telegrama para que inicialmente siempre sea ordinario**
+            char tipoTelegrama = 'o';
             int numPalabras = 0;
             double coste;
             //Leo el telegrama
@@ -31,8 +31,8 @@ namespace ejercicioTelegrama
             {
                 tipoTelegrama = 'u';
             }
-            //Obtengo el número de palabras que forma el telegrama
-            numPalabras = textoTelegrama.Length;
+            //Obtengo el número de palabras que forma el telegrama, **añado Split(' ') Para contar las palabras correctamente**
+            numPalabras = textoTelegrama.Split(' ').Length;
             //Si el telegrama es ordinario
             if (tipoTelegrama == 'o')
             {
@@ -42,7 +42,8 @@ namespace ejercicioTelegrama
                 }
                 else
                 {
-                    coste = 0.5 * numPalabras;
+                    //**modifico el calculo de los telegramas ordinarios, el calculo anterior era incorrecto.**
+                    coste = 2.5 + 0.5 * (numPalabras - 10);
                 }
             }
             else
